@@ -1,0 +1,48 @@
+                                                EC2 LAUNCH WITH SECURITY GROUPS 
+provider "aws" {
+region = "us-east-1"
+access_key = "AKIASJ35EVVPKFCAG3ST"
+
+secret_key = "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"
+
+}
+
+resource "aws_instance" "us-east-1" {       ###### MACHINE TYPE 
+  ami           = "ami-0cff7528ff583bf9a"
+  instance_type = "t2.micro"
+  key_name= "testing"
+}
+################################     ADD SECURITY TO YOUR EC2 INSTANCE 
+resource "aws_security_group" "security_jenkins_port" {
+  name        = "security_jenkins_port"                                         #############security group name 
+  description = "security group for jenkins"                          #############DESCRIPTION 
+
+  ingress {
+    from_port   = 8080
+    to_port     = 8080                                                                          ######IN BOUND RULES OR TRAFFIC 
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+ ingress {                                                                          ####### YOU CAN ALSO ALLOY MAny OTHER 
+    from_port   = 22                                                                           PORTS TO IN BOUND YOUR TRAFFIC 
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+ # outbound from jenkis server
+  egress {                                                                  ################ OUT BOUND TRAFFIC                                                     
+    from_port   = 0
+    to_port     = 65535
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  tags= {
+    Name = "security_jenkins_port"
+  }
+}
+#########################################
+
+
