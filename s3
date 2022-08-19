@@ -6,10 +6,6 @@ access_key = "AKIASJ35EVVPKFCAG3ST"
 secret_key = "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"
 
 }
-
-
-
-
 resource "aws_s3_bucket" "testing" {
 bucket ="bigrock"
 acl ="private"
