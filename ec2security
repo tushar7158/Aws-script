@@ -1,9 +1,9 @@
                                                 EC2 LAUNCH WITH SECURITY GROUPS 
 provider "aws" {
 region = "us-east-1"
-access_key = "AKIASJ35EVVPKFCAG3ST"
+access_key = ""
 
-secret_key = "wjPWfr1JWmaKburOOq49L4utY3FLDcfXZrDmVx8q"
+secret_key = ""
 
 }
 
